@@ -9,10 +9,10 @@ class Post {
   int likes;
   Set<String> likedUsers;
 
-  Post(
-    this.text,
-    this.likes,
-  ) : likedUsers = {};
+  Post({
+    required this.text,
+    this.likes = 0,
+  }) : likedUsers = {};
 }
 }
 }
