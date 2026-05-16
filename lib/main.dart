@@ -7,8 +7,15 @@ void main() {
 class Post {
   String text;
   int likes;
+  Set<String> likedUsers;
 
-  Post(this.text, this.likes);
+  Post(
+    this.text,
+    this.likes,
+  ) : likedUsers = {};
+}
+}
+}
 }
 
 class MyApp extends StatefulWidget {
@@ -29,8 +36,19 @@ class _MyAppState extends State<MyApp> {
   }
 
   void likePost(int index) {
-    setState(() {
-      posts[index].likes++;
+  setState(() {
+    final post = posts[index];
+    const userId = "user";
+
+    if (post.likedUsers.contains(userId)) {
+      post.likedUsers.remove(userId);
+      post.likes--;
+    } else {
+      post.likedUsers.add(userId);
+      post.likes++;
+    }
+  });
+}
     });
   }
 
